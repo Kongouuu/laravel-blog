@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel-Blog : About Me</title>
+        <title>Laravel-Blog : Contact Me</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -23,10 +23,10 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/">Home </a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="/about">About</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="/contact">Contact</a>
 					</li>
 				</ul>
@@ -51,8 +51,24 @@
 				<div class="col-md-8 offset-md-2">
 					<h1>About Me</h1>
                     <hr>
-                    <p> Leave it here first Leave it here first Leave it here first Leave it here first Leave it here first
-                    Leave it here first Leave it here first Leave it here first</p>
+                    <form>
+						<div class="form-group">
+							<label name="email">Email:</label>
+							<input id="email" name="email" class="form-control" tyle="email">
+						</div>
+
+						<div class="form-group">
+							<label name="subject">Subject:</label>
+							<input id="subject" name="subject" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label name="message">Message:</label>
+							<textarea id="message" name="message" class="form-control" placeholder="Speak to me here!"></textarea>
+						</div>
+
+						<input type="submit" class="btn btn-info" value="Send Message">
+					</form>
 				</div>
 			</div>
 		</div>
