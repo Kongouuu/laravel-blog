@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel-Blog : About Me</title>
+        <title>Laravel Blog</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,6 +13,7 @@
     </head>
 
     <body>
+        {{-- Navbar --}}
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#">Laravel Blog</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +24,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/">Home </a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="/about">About</a>
 					</li>
 					<li class="nav-item">
@@ -47,14 +48,7 @@
 		</nav>
 
 		<div class="container" style="margin-top:20px">
-			<div class="row">
-				<div class="col-md-8 offset-md-2">
-					<h1>About Me</h1>
-                    <hr>
-                    <p> Leave it here first Leave it here first Leave it here first Leave it here first Leave it here first
-                    Leave it here first Leave it here first Leave it here first</p>
-				</div>
-			</div>
+			@yield('content')
 		</div>
 
 

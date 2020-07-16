@@ -5,18 +5,15 @@ namespace App\Http\Controllers;
 class PagesController extends Controller {
 
     public function getIndex() {
-        return view('welcome');
+        return view('pages/welcome');
     }
 
     public function getAbout() {
-        $data = [];
-        $data['email'] = '2301788091@qq.com';
-        $data['fullname'] = 'TC Hsieh';
-        return view('about')->with("data",$data);
+        return view('pages/about');
     }
 
     public function getContact() {
-        return view('contact');
+        return view('pages/contact');
     }
 
     public function postContact() {
