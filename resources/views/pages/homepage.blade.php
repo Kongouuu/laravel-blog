@@ -1,4 +1,6 @@
-@extends('layout')
+@extends('main')
+
+@section('title', '| Home')
 
 @section('content')
 	<div class="row">

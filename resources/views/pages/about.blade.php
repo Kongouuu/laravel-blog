@@ -1,4 +1,6 @@
-@extends('layout')
+@extends('main')
+
+@section('title', '| About')
 
 @section('content')
 	<div class="row">
@@ -9,4 +11,4 @@
 			Leave it here first Leave it here first Leave it here first</p>
 		</div>
 	</div>
-	@endsection
+@endsection

@@ -47,3 +47,17 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:white;
+    color: #636b6f;
+    text-align: center;
+}
+
+.footer hr {
+    width:60%;
+}
+
