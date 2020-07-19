@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts/create');
     }
 
     /**
@@ -34,7 +36,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate
+        $this->validate($request,[
+            'title' => 'required|max:100',
+            'body'  => 'required|max:15000'
+        ]);
+
+        // store
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body  = $request->body;
+        $post->save();
+
+        // flash
+        session()->flash('success','The post is successfully created!');
+
+        // redirect
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -45,7 +63,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        // Find is "where" using $id only
+        $post = Post::find($id);
+        // with('variable', $value), to use the variable in blade,
+        // write 'variable' as $variable
+        return view('posts/show')->with('post',$post);
     }
 
     /**
