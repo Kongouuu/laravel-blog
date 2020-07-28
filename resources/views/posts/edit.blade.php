@@ -3,11 +3,20 @@
 @section('title', '| View Post')
 
 @section('content')
+    {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
     <div class="row">
-        <div class="col-md-8" style="word-wrap: break-word">
-            <h1 style="margin-top:30px">{{ $post->title }}</h1>
-            <hr>
-            <p>{{ $post->body }}</p>
+        {{-- Model is form binding existing entry
+             Route here takes in array of destination and parameter--}}
+        <div class="col-md-8">
+                <div class="form-group">
+                    {{ Form::label('title','Title:')}}
+                    {{ Form::text('title', null, ['class' => 'form-control', 'maxlength' => '100', 'required' => 'required']) }}
+                </div>
+    
+                <div class="form-group">
+                    {{ Form::label('body','Body:')}}
+                    {{ Form::textarea('body', null, ['class' => 'form-control', 'maxlength' => '15000', 'required' => 'required']) }}
+                </div>    
         </div>
 
         <div class="col-md-4">
@@ -28,17 +37,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             {{-- <a href="#" class="btn btn-success btn-block">Edit</a> --}}
-                            {!! Html::linkRoute('posts.edit','Edit',[$post->id], ['class'=> 'btn btn-success btn-block']) !!}
+                            {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
                         </div>
                         <div class="col-md-6">
-                            {!! Form::open(['route' => ['posts.destroy', $post->id],'method' => 'DELETE']) !!}                       
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
-                            {!! Form::close() !!}
+                            
+                            {!! Html::linkRoute('posts.show','Cancel',[$post->id], ['class'=> 'btn btn-danger btn-block']) !!}
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
+        {!! Form::close() !!}
     </div>
     
 
