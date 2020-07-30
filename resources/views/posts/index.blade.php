@@ -34,7 +34,7 @@
                             <td>{{ substr($post->body,0,50) }} {{ strlen($post->body)>50?"...":"" }}</td>
                             <td>{{ date('M j, Y h:i',strtotime($post->created_at)) }}</td>
                             <td>
-                                {!! Html::linkRoute('posts.show','View',[$post->id], ['class' => 'btn btn-light']) !!}
+                                {!! Html::linkRoute('posts.show','View',[$post->id], ['class' => 'btn btn-outline-secondary']) !!}
                                 {!! Html::linkRoute('posts.edit','Edit',[$post->id], ['class'=> 'btn btn-success']) !!}
                             </td>
                         </tr>

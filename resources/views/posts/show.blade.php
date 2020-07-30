@@ -35,6 +35,9 @@
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
+                        <div class="col-md-12" style="margin-top:20px">
+                            {!! Html::linkRoute('posts.index','<< See All Posts',[], ['class'=> 'btn btn-outline-secondary btn-block']) !!}
+                        </div>
                     </div>
                 </div>
               </div>

@@ -19,3 +19,6 @@ Route::get('contact', 'PagesController@getContact');
 
 // ('url', 'controller')
 Route::resource('posts', 'PostController');
+Auth::routes();
+
+Route::get('/notice', 'HomeController@index')->name('home');

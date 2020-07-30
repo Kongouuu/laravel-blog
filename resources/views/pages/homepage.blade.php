@@ -10,36 +10,20 @@
 				<p class="lead">Thank you for visiting</p>
 				<hr class="my-4">
 				<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+				<a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-8">
-			<div class="post">
-				<h3>Post Title</h3>
-				<p>Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				</p>
-				<a href="#" class="btn btn-primary">Read More</a>
-				<hr>
+			@foreach($posts as $post)
+			<div class="post" style="word-wrap: break-word">
+				<h3> {{ substr($post->title,0,100) }} {{ strlen($post->title)>100?"...":"" }} </h3>
+				<p>	 {{ substr($post->body,0,700) }} {{ strlen($post->body)>700?"...":"" }} </p>
+				{!! Html::linkRoute('posts.show','Read More ->',[$post->id], ['class' => 'btn btn-success', 'style' => 'float: right; margin-bottom:20px']) !!}
+				<hr style="clear:both">
 			</div>
-			<div class="post">
-				<h3>Post Title</h3>
-				<p>Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				</p>
-				<a href="#" class="btn btn-primary">Read More</a>
-				<hr>
-			</div>
-			<div class="post">
-				<h3>Post Title</h3>
-				<p>Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun Type anything here for fun 
-				</p>
-				<a href="#" class="btn btn-primary">Read More</a>
-				<hr>
-			</div>
+			@endforeach
 		</div>
 
 		<div class="col-md-3 offset-md-1">
