@@ -61,3 +61,15 @@ html, body {
     width:60%;
 }
 
+.page-item.active .page-link{
+    background-color: green !important;
+    border-color: green;
+}
+
+.page-link {
+    color: green;
+}
+
+.page-link:hover {
+    color:green;
+}

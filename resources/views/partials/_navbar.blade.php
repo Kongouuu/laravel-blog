@@ -15,6 +15,10 @@
             <li class="nav-item {{ Request::is('contact')?"active":"" }}">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
+            <!-- for testing only -->
+            <li class="nav-item {{ Request::is('posts')?"active":"" }}">     
+                <a class="nav-link" href="/posts">Posts</a>
+            </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
