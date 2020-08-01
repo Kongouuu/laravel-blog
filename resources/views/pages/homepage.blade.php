@@ -20,7 +20,7 @@
 			<div class="post" style="word-wrap: break-word">
 				<h3> {{ substr($post->title,0,100) }} {{ strlen($post->title)>100?"...":"" }} </h3>
 				<p>	 {{ substr($post->body,0,700) }} {{ strlen($post->body)>700?"...":"" }} </p>
-				{!! Html::linkRoute('posts.show','Read More ->',[$post->id], ['class' => 'btn btn-success', 'style' => 'float: right; margin-bottom:20px']) !!}
+				{!! Html::linkRoute('blogs.show','Read More ->',[$post->id], ['class' => 'btn btn-success', 'style' => 'float: right; margin-bottom:20px']) !!}
 				<hr style="clear:both">
 			</div>
 			@endforeach
