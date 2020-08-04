@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use Session;
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts/create');
+        $categories = Category::all();
+        return view('posts/create')->with('categories',$categories);
     }
 
     /**
@@ -40,14 +45,16 @@ class PostController extends Controller
     {
         // validate
         $this->validate($request,[
-            'title' => 'required|max:100',
-            'body'  => 'required|max:15000'
+            'title'       => 'required|max:100',
+            'category_id' => 'required|integer',
+            'body'        => 'required|max:15000'   
         ]);
 
         // store
         $post = new Post;
         $post->title = $request->title;
         $post->body  = $request->body;
+        $post->category_id = $request->category_id;
         $post->save();
 
         // flash
@@ -81,7 +88,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('posts/edit')->with('post',$post);
+        $categories = Category::all();
+        return view('posts/edit')->with('post',$post)->with('cateogries', $categories);
     }
 
     /**
@@ -95,12 +103,14 @@ class PostController extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:100',
+            'category_id' => 'required|integer',
             'body'  => 'required|max:15000'
         ]);
 
         // store
         $post = Post::find($id);
         $post->title = $request->title;
+        $post->category_id = $request->category_id;
         $post->body  = $request->body;
         $post->save();
 

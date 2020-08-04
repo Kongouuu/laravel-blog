@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,8 @@ Route::get('blogs', ['uses' => 'BlogController@getIndex', 'as' => 'blogs.index']
 Route::get('blogs/{id}',['uses' => 'BlogController@getBlog', 'as' => 'blogs.show']);
 // ('url', 'controller')
 Route::resource('posts', 'PostController');
+// Remove categories.create route
+Route::resource('categories', 'CategoryController',['except' => ['create']]);
 Auth::routes();
 
 Route::get('/notice', 'HomeController@index')->name('home');

@@ -12,6 +12,15 @@
                     {{ Form::label('title','Title:')}}
                     {{ Form::text('title', null, ['class' => 'form-control', 'maxlength' => '100', 'required' => 'required']) }}
                 </div>
+
+                <div class="form-group">
+                    {{ Form::label('category_id','Category:')}}
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
     
                 <div class="form-group">
                     {{ Form::label('body','Body:')}}

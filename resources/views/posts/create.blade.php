@@ -22,6 +22,16 @@
                 </div>
 
                 <div class="form-group">
+                    {{ Form::label('category_id','Category:')}}
+                    {{-- Sometimes it looks better to not use "blade" syntax --}}
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     {{ Form::label('body','Post body:')}}
                     {{ Form::textarea('body', null, ['class' => 'form-control', 'maxlength' => '15000', 'required' => 'required']) }}
                 </div>

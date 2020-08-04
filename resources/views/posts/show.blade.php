@@ -12,7 +12,11 @@
 
         <div class="col-md-4">
             <div class="card">
-                <div class="card-body" style="padding: 35px">
+                <div class="card-body" style="padding: 30px">
+                    <dl class="row">
+                        <dt class="col-md-6">Category:</dt>
+                        <dd class="col-md-6">{{ $post->category->name }}</dd>
+                    </dl>
                     <dl class="row">
                         <dt class="col-md-6">Created At:</dt>
                         {{-- Date stored is in the format of yyyy-mm-dd hh-mm-ss
