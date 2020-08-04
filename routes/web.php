@@ -23,6 +23,7 @@ Route::get('blogs/{id}',['uses' => 'BlogController@getBlog', 'as' => 'blogs.show
 Route::resource('posts', 'PostController');
 // Remove categories.create route
 Route::resource('categories', 'CategoryController',['except' => ['create']]);
+Route::resource('tags', 'TagController',['except' => ['create']]);
 Auth::routes();
 
 Route::get('/notice', 'HomeController@index')->name('home');

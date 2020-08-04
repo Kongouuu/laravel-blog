@@ -1,12 +1,12 @@
 @extends('main')
 
-@section('title', '| Categories Index')
+@section('title', '| Tags Index')
 
 @section('content')
 
     <div class="row">
         <div class="col-md-8">
-            <h1>Categories</h1>
+            <h1>Tags</h1>
             <table class="table" style="margin-top: 30px">
                 <thead>
                         <tr>
@@ -16,12 +16,12 @@
                         </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $category)
+                    @foreach($tags as $tag)
                         <tr>
-                            <th>{{ $category->id }}</th>
-                            <td>{{ $category->name}}</td>
+                            <th>{{ $tag->id }}</th>
+                            <td>{{ $tag->name}}</td>
                             <td style="text-align:right">
-                                {!! Form::open(['route' => ['categories.destroy', $category->id],'method' => 'DELETE']) !!}                       
+                                {!! Form::open(['route' => ['tags.destroy', $tag->id],'method' => 'DELETE']) !!}                       
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn']) !!}
                                 {!! Form::close() !!}
                             </td>
@@ -34,19 +34,19 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body" style="padding: 35px">
-                        {!! Form::open(['route' => 'categories.store']) !!}
-                            <h2>New Category</h2>
+                        {!! Form::open(['route' => 'tags.store']) !!}
+                            <h2>New Tag</h2>
                             <div class="form-group">    
                                 {{ Form::label('name','Name:')}}
-                                {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => '50', 'required' => 'required']) }}
+                                {{ Form::text('name', null, ['class' => 'form-control', 'maxlength' => '25', 'required' => 'required']) }}
                             </div>
-                            {{ Form::submit('Create Category', ['class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px']) }}
+                            {{ Form::submit('Create Tag', ['class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px']) }}
                         {!! Form::close() !!}
                 </div>
             </div>
         </div>
         <div class="text-center">
-            {!! $categories->links() !!}
+            {!! $tags->links() !!}
         </div>
     </div>
 @endsection
