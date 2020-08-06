@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Session;
 
 class PostController extends Controller
@@ -32,7 +33,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts/create')->with('categories',$categories);
+        $tags       = Tag::all();
+        return view('posts/create')->with('categories',$categories)->with('tags',$tags);
     }
 
     /**
@@ -56,6 +58,11 @@ class PostController extends Controller
         $post->body  = $request->body;
         $post->category_id = $request->category_id;
         $post->save();
+
+        // sync for association is after save
+        // First parameter is what to bind
+        // Second parameter is to overwrite or not
+        $post->tags()->sync($request->tags, false);
 
         // flash
         session()->flash('success','The post is successfully created!');
@@ -89,7 +96,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
-        return view('posts/edit')->with('post',$post)->with('cateogries', $categories);
+        $tags       = Tag::all();
+        return view('posts/edit')->with('post',$post)->with('categories', $categories)->with('tags',$tags);
     }
 
     /**
@@ -114,6 +122,8 @@ class PostController extends Controller
         $post->body  = $request->body;
         $post->save();
 
+        // Overwrite, therefore no need "false"
+        $post->tags()->sync($request->tags);
         // flash
         session()->flash('success','The post is successfully updated!');
 

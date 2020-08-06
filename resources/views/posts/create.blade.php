@@ -2,6 +2,10 @@
 
 @section('title', '| Create Post')
 
+@section('stylesheets')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-8 offset-md-2">
@@ -25,8 +29,19 @@
                     {{ Form::label('category_id','Category:')}}
                     {{-- Sometimes it looks better to not use "blade" syntax --}}
                     <select class="form-control" name="category_id">
+                        <option disabled="disabled" selected="selected">Please select a category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    {{ Form::label('tags','Tags:') }}
+                    {{-- name has to be an array so value stored is array --}}
+                    <select class="form-control js-example-basic-multiple" name="tags[]" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -40,4 +55,13 @@
         </div>
         {!! Form::close() !!}
     </div>
+@endsection
+
+@section('scripts')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 @endsection

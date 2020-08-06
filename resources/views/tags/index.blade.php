@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Tags Index')
+@section('title', '| Tags')
 
 @section('content')
 
@@ -19,7 +19,7 @@
                     @foreach($tags as $tag)
                         <tr>
                             <th>{{ $tag->id }}</th>
-                            <td>{{ $tag->name}}</td>
+                            <td>{!! Html::linkRoute('tags.show',$tag->name,[$tag->id], ['style' => "color:green"]) !!}</td>
                             <td style="text-align:right">
                                 {!! Form::open(['route' => ['tags.destroy', $tag->id],'method' => 'DELETE']) !!}                       
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn']) !!}

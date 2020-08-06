@@ -6,6 +6,11 @@
     <div class="row">
         <div class="col-md-8" style="word-wrap: break-word">
             <h1 style="margin-top:30px">{{ $post->title }}</h1>
+            <h4>
+            @foreach($post->tags as $tag)
+                <span class="badge badge-pill badge-secondary">{{ $tag->name }}</span>
+            @endforeach
+            </h4>
             <hr>
             <p>{{ $post->body }}</p>
         </div>

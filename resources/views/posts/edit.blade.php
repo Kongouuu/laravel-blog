@@ -1,6 +1,10 @@
 @extends('main')
 
-@section('title', '| View Post')
+@section('title', '| Edit Post')
+
+@section('stylesheets')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
 
 @section('content')
     {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
@@ -16,8 +20,23 @@
                 <div class="form-group">
                     {{ Form::label('category_id','Category:')}}
                     <select class="form-control" name="category_id">
+                        <option disabled="disabled">Please select a category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @if($category->id == $post->category_id)
+                                <option value="{{ $category->id }}" selected="selected">{{ $category->name }}</option>
+                            @else
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('tags','Tags:') }}
+                    {{-- name has to be an array so value stored is array --}}
+                    <select class="form-control js-example-basic-multiple" name="tags[]" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}"> {{$tag->name}} </option>
                         @endforeach
                     </select>
                 </div>
@@ -58,6 +77,16 @@
         </div>
         {!! Form::close() !!}
     </div>
-    
+@endsection
 
+@section('scripts')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+            // Javascript does not accept raw php language, so need json_encode
+            // allRelatedIds is to create array of ids in many->many relationship
+            $('.js-example-basic-multiple').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+        });
+    </script>
 @endsection

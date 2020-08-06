@@ -1,39 +1,42 @@
 @extends('main')
 
-@section('title', '| Posts')
+@section('title', "| $tag->name Tag ")
 
 @section('content')
-
     <div class="row">
-        <div class="col-md-10">
-            <h1>All Posts</h1>
+        <div class="col-md-7">
+            <h1>{{ $tag->name }} Tag (<small> {{ $tag->posts()->count() }} Posts</small>)</h1>
+            <hr>
         </div>
 
-        <div class="col-md-2">
-                {!! Html::linkRoute('posts.create','Create New Post',[], ['class' => 'btn btn-success btn-block', 'style' => 'margin-top:10px']) !!}
+        <div class="col-md-2 offset-md-1">
+                {!! Html::linkRoute('tags.index','Back',[], ['class' => 'btn btn-block btn-outline-secondary', 'style' => 'margin-top:10px']) !!}
         </div>
-    </div>
+        <div class="col-md-2"> 
+            {!! Html::linkRoute('tags.edit','Edit',[$tag->id], ['class' => 'btn btn-block btn-success', 'style' => 'margin-top:10px']) !!}
+        </div>
 
-    <div class="row">
         <div class="col-md-12">
             <table class="table" style="margin-top: 30px">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Body</th>
-                        <th>Created At:</th>
+                        <th>Tags</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($posts as $post)
+                    @foreach($tag->posts as $post)
                         <tr>
                             <th>{{ $post->id }}</th>
                             <td>{{ substr($post->title,0,30) }} {{ strlen($post->title)>30?"...":"" }}</td>
-                            <td>{{ substr($post->body,0,50) }} {{ strlen($post->body)>50?"...":"" }}</td>
-                            <td>{{ date('M j, Y h:i',strtotime($post->created_at)) }}</td>
                             <td>
+                                @foreach($post->tags as $tag)
+                                    <span class="badge badge-pill badge-secondary">{{ $tag->name }}</span>
+                                @endforeach
+                            </td>
+                            <td style="text-align:right">
                                 {!! Html::linkRoute('posts.show','View',[$post->id], ['class' => 'btn btn-outline-secondary']) !!}
                                 {!! Html::linkRoute('posts.edit','Edit',[$post->id], ['class'=> 'btn btn-success']) !!}
                             </td>
@@ -41,11 +44,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-            <div class="text-center">
-                {!! $posts->links() !!}
-            </div>
         </div>
     </div>
-
 @endsection
