@@ -16,14 +16,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@getIndex');
 Route::get('about', 'PagesController@getAbout');
-Route::get('contact', 'PagesController@getContact');
+
+Route::get('contact', ['uses' => 'PagesController@getContact', 'as' => 'contact.show']);
+Route::post('contact', ['uses' => 'PagesController@postContact', 'as' => 'contact.post']);
+
+// Blogs
 Route::get('blogs', ['uses' => 'BlogController@getIndex', 'as' => 'blogs.index']);
 Route::get('blogs/{id}',['uses' => 'BlogController@getBlog', 'as' => 'blogs.show']);
-// ('url', 'controller')
+
+// Posts
 Route::resource('posts', 'PostController');
+
+// Categories
 // Remove categories.create route
 Route::resource('categories', 'CategoryController',['except' => ['create']]);
+// Tags
 Route::resource('tags', 'TagController',['except' => ['create']]);
+
+// Authentication
 Auth::routes();
 
+// Use with Auth, direct after log-in
 Route::get('/notice', 'HomeController@index')->name('home');

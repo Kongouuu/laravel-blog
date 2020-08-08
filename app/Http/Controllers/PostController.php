@@ -140,6 +140,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        // Delete relation
+        $post->tags()->detach();
         $post->delete();
 
         session()->flash('success','The post is successfully deleted!');

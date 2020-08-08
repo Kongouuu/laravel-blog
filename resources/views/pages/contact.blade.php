@@ -5,26 +5,27 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<h1>About Me</h1>
+			<h1>Contact Me</h1>
 			<hr>
-			<form>
+			{!! Form::open(['route' => 'contact.post']) !!}
 				<div class="form-group">
-					<label name="email">Email:</label>
-					<input id="email" name="email" class="form-control" tyle="email">
+					{{ Form::label('email','Email:')}}
+					{{ Form::text('email', null, ['class' => 'form-control', 'maxlength' => '255', 'required' => 'required', 'type' => 'email']) }}
 				</div>
 
 				<div class="form-group">
-					<label name="subject">Subject:</label>
-					<input id="subject" name="subject" class="form-control">
+					{{ Form::label('subject','Subject:')}}
+					{{ Form::text('subject', null, ['class' => 'form-control', 'maxlength' => '255', 'required' => 'required', 'type' => 'email']) }}
 				</div>
 
 				<div class="form-group">
-					<label name="message">Message:</label>
-					<textarea id="message" name="message" class="form-control" placeholder="Speak to me here!"></textarea>
+					{{ Form::label('message','Message:')}}
+					{{ Form::textarea('message', null, ['class' => 'form-control', 'maxlength' => '10000', 'required' => 'required',
+						'placeholder' => 'Speak to me here!']) }}
 				</div>
 
-				<input type="submit" class="btn btn-info" value="Send Message">
-			</form>
+				{{ Form::submit('Send Message', ['class' => 'btn btn-info', 'style' => 'margin-top: 20px']) }}
+			{!! Form::close() !!}
 		</div>
 	</div>
 @endsection
