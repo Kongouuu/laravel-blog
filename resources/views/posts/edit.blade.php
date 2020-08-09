@@ -68,8 +68,12 @@
                             {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
                         </div>
                         <div class="col-md-6">
-                            
-                            {!! Html::linkRoute('posts.show','Cancel',[$post->id], ['class'=> 'btn btn-danger btn-block']) !!}
+                            {!! Form::open(['route' => ['posts.destroy', $post->id],'method' => 'DELETE']) !!}                       
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                        <div class="col-md-12" style="margin-top:20px">
+                            {!! Html::linkRoute('posts.show','Cancel',[$post->id], ['class'=> 'btn btn-outline-secondary btn-block']) !!}
                         </div>
                     </div>
                 </div>

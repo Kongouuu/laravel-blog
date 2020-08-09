@@ -27,9 +27,12 @@ Route::get('blogs/{id}',['uses' => 'BlogController@getBlog', 'as' => 'blogs.show
 // Posts
 Route::resource('posts', 'PostController');
 
+// Comments
+Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+
 // Categories
-// Remove categories.create route
 Route::resource('categories', 'CategoryController',['except' => ['create']]);
+
 // Tags
 Route::resource('tags', 'TagController',['except' => ['create']]);
 
