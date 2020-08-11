@@ -15,7 +15,7 @@ Actually there is a lot more interfaces, these are just part of the project
 ### Managing Post
 ![Managing post](screenshots/Managing-post.png)
 ### Creating Post
-![Creating post](screenshots/Creating-post.png)
+![Creating post](screenshots/Create-post.png)
 ### Comments
 ![Comment](screenshots/Comment.png)
 
