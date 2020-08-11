@@ -29,6 +29,7 @@ Route::resource('posts', 'PostController');
 
 // Comments
 Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+Route::delete('comments/{comment}',['uses' => 'CommentController@destroy', 'as' => 'comments.destroy']);
 
 // Categories
 Route::resource('categories', 'CategoryController',['except' => ['create']]);

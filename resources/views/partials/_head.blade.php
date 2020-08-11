@@ -27,5 +27,6 @@
     <!-- Styles -->
     @yield('stylesheets')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 
 </head>

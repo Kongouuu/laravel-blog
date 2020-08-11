@@ -36,7 +36,7 @@
                     </div>
 
                     {{-- Comment body --}}
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <div class="card" style="margin-top: 20px; margin-left: 20px;">
                             <h5 class="card-header">
                                 {{ $comment->name }} <small>{{ date('M j, Y h:i',strtotime($comment->created_at)) }}</small>
@@ -46,6 +46,7 @@
                             </div>      
                         </div>    
                     </div>
+                    <div class="col-md-1"></div>
                 @endforeach
             </div>
         </div>

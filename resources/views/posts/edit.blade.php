@@ -66,6 +66,7 @@
                         <div class="col-md-6">
                             {{-- <a href="#" class="btn btn-success btn-block">Edit</a> --}}
                             {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
+                            {!! Form::close() !!}
                         </div>
                         <div class="col-md-6">
                             {!! Form::open(['route' => ['posts.destroy', $post->id],'method' => 'DELETE']) !!}                       
@@ -79,7 +80,7 @@
                 </div>
             </div>
         </div>
-        {!! Form::close() !!}
+
     </div>
 @endsection
 
@@ -92,5 +93,9 @@
             // allRelatedIds is to create array of ids in many->many relationship
             $('.js-example-basic-multiple').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
         });
+        new FroalaEditor('textarea', {
+            // Set custom buttons.
+            toolbarButtons: [['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'], ['fontFamily', 'fontSize', 'textColor', 'backgroundColor'], ['inlineClass', 'inlineStyle', 'clearFormatting']]
+        })
     </script>
 @endsection

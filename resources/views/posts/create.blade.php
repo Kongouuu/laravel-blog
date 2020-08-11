@@ -59,9 +59,14 @@
 
 @section('scripts')
     {!! Html::script('js/select2.min.js') !!}
+    
     <script>
         $(document).ready(function() {
             $('.js-example-basic-multiple').select2();
         });
+        new FroalaEditor('textarea', {
+            // Set custom buttons.
+            toolbarButtons: [['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'], ['fontFamily', 'fontSize', 'textColor', 'backgroundColor'], ['inlineClass', 'inlineStyle', 'clearFormatting']]
+        })
     </script>
 @endsection
