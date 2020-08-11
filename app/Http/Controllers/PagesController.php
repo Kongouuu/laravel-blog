@@ -14,6 +14,11 @@ class PagesController extends Controller {
     public function getIndex() {
         // order by created_at in descending order
         $posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
+        foreach($posts as $post){
+            $post->body = str_replace("<p>", "", $post->body);
+            $post->body = str_replace("</p>", "", $post->body);
+            $post->body = str_replace("font-size", "", $post->body);
+        }
         return view('pages/homepage')->with('posts', $posts);
     }
 

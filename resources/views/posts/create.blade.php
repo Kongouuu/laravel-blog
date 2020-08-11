@@ -46,7 +46,9 @@
                     </select>
                 </div>
 
-                {{-- Actually WYSIWYG might not be very safe, but it is just a practice blog and I want more features :D --}}
+                {{-- Actually WYSIWYG might not be very safe.
+                     Probably contians issues when not esacping htmlchars,
+                     but it is just a practice blog and I want more features :D --}}
                 <div class="form-group">
                     {{ Form::label('body','Post body:')}}
                     {{ Form::textarea('body', null, ['class' => 'form-control', 'maxlength' => '15000', 'required' => 'required']) }}

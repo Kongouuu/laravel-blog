@@ -7,7 +7,7 @@
 
     {{-- Display blog section --}}
     <div class="row">
-        <div class="col-md-8 offset-md-2" style="word-wrap: break-word">
+        <div class="col-md-10 offset-md-1" style="word-wrap: break-word">
             <h1 style="margin-top:30px">{{ $post->title }}</h1>
             <p>
                 @foreach($post->tags as $tag)
@@ -17,13 +17,13 @@
             <p>Category: {{ $post->category->name }}</p>
             <p>{{ date('M j, Y h:i',strtotime($post->created_at)) }}</p>
             <hr>
-            <p>{{ $post->body }}</p>
+            <p>{!! $post->body !!}</p>
         </div>
     </div>
 
     {{-- Display comment section --}}
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
             <hr>
             {{-- Show how many comments in this blog --}}
             <h2>Comments ({{ $post->comments()->count() }})</h2>
@@ -54,7 +54,7 @@
     
     {{-- Create comment section --}}
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
             <div class="comment-form" style="margin-top: 50px">
                 {!! Form::open(['route' => ['comments.store', $post->id]]) !!}
                     <div class="row">

@@ -22,6 +22,11 @@ class PostController extends Controller
     {
         // Pagination (show 10 per page)
         $posts = Post::paginate(10);
+        foreach($posts as $post){
+            $post->body = str_replace("<p>", "", $post->body);
+            $post->body = str_replace("</p>", "", $post->body);
+            $post->body = str_replace("font-size", "", $post->body);
+        }
         return view('posts.index')->with('posts',$posts);
     }
 
