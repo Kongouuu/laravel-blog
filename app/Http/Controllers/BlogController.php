@@ -8,11 +8,6 @@ class BlogController extends Controller
 {
     public function getIndex(){
         $posts= Post::paginate(10);
-        foreach($posts as $post){
-            $post->body = str_replace("<p>", "", $post->body);
-            $post->body = str_replace("</p>", "", $post->body);
-            $post->body = str_replace("font-size", "", $post->body);
-        }
         return view('blogs.index')->with('posts',$posts);
     }
 

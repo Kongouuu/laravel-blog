@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use App\Tag;
-use Session;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -60,7 +60,7 @@ class PostController extends Controller
         // store
         $post = new Post;
         $post->title = $request->title;
-        $post->body  = $request->body;
+        $post->body  = Purifier::clean($request->body);
         $post->category_id = $request->category_id;
         $post->save();
 
@@ -124,7 +124,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->category_id = $request->category_id;
-        $post->body  = $request->body;
+        $post->body  = Purifier::clean($request->body);
         $post->save();
 
         // Overwrite, therefore no need "false"
