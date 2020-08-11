@@ -47,9 +47,10 @@ Comments can be created by any guest without register/login.
 Auto generated icons using [Gravatar](https://en.gravatar.com/) is supported
 
 ## Other
+### Extra information
 1) I tried to make the website with mainly White & Grey & Green, just thought it looks cool. So every hyperlink and many buttons are green
-2) There is a contacct me page, bind to a dummy mailer, so people can contact whoever owns the blog privately.
-
+2) There is a contact me page, bind to a dummy mailer, so people can contact whoever owns the blog privately.
+### Improvements
 I can later on do many things with the template, here are few thoughts:
 1) Cancel the register route, and make the blog personal by adding my personal informations :D
 2) Make a new user model so everyone can post blogs
