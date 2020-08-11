@@ -1,80 +1,57 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## A Practice on Laravel
+[Laravel](https://github.com/laravel/laravel) is a very cool framework for making web apps.
+I have tried Ruby on Rails before, just wanted to try out sth new.
+This is just a basic practice on basic CRUD & User authentication related development.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Interfaces
+### Note
+Actually there is a lot more interfaces, these are just part of the project
+### Home Page
+![Home](screenshots/Home.png)
+### View Post (With ugly effects to show function of text editor)
+![Post](screenshots/View-post.png)
+### Register
+![Register](screenshots/Register.png)
+### Managing Post
+![Managing post](screenshots/Managing-post.png)
+### Creating Post
+![Creating post](screenshots/Creating-post.png)
+### Comments
+![Comment](screenshots/Comment.png)
 
-## About Laravel
+## Functions
+### Overall
+The blog is to practice some features of laravel, so there are some weird designs.
+The blog allows the **one and only** admin to **register** an account, and managing the personal website.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## User Module
+The only user should be admin in this project, the register route may be cancelled with login route hidden if the site is to be published.
+Aside from that, for practice reasons, here are related features:
+> #### Mostly implemented by the laravel/ui Authentication package
+> #### With command: `php artisan ui vue --auth`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1) Escaping characters to prevent injection
+2) Mailer and token system for resetting password
+3) Cookie for remember me
+4) Authentication system for admin(user) pages
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Post Module
+### Uses the [Froala WYSIWYG-editor](https://github.com/froala/wysiwyg-editor)
+This allows admin to ceate posts of different font-size,color,highiting, etc.
+Uses [Purifier](https://github.com/mewebstudio/Purifier) to make sure no malicious code will be entered, well, the only one who can post now is admin, so not quite needed. Will be helpful later on if there is a need to create a real **user** model that seperates from **admin**
+### Relation
+**Many to One** for Categories
+**Many to Many** for Tags
+### Comments
+Comments can be created by any guest without register/login.
+Auto generated icons using [Gravatar](https://en.gravatar.com/) is supported
 
-## Learning Laravel
+## Other
+1) I tried to make the website with mainly White & Grey & Green, just thought it looks cool. So every hyperlink and many buttons are green
+2) There is a contacct me page, bind to a dummy mailer, so people can contact whoever owns the blog privately.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# laravel-blog
+I can later on do many things with the template, here are few thoughts:
+1) Cancel the register route, and make the blog personal by adding my personal informations :D
+2) Make a new user model so everyone can post blogs
+3) Addming modal confirmation to make the page look better
+4) Use Laravel with Vue to make a one-page app that runs more smooth
